@@ -14,7 +14,7 @@ Primero, haz un fork de este repositorio. Esto crea una copia de este proyecto e
 Una vez que hayas hecho el fork, clona el repositorio en tu máquina local para trabajar en él. Agrega el repositorio original como un remote.
 
 ```bash
-git clone https://github.com/tu-usuario/GitHub-Flow.git
+git clone git@github.com:tu-usuario/GitHub-Flow.git
 cd GitHub-Flow
 git remote add upstream git@github.com:JMProf/GitHub-Flow.git
 ```
