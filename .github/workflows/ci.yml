@@ -1,0 +1,30 @@
+name: Continuous Integration for HTML & CSS
+
+on:
+  pull_request:
+    branches:
+      - main  # Este flujo de trabajo se ejecutará cuando haya un PR hacia la rama `main`
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest  # El flujo de trabajo se ejecuta en un entorno Ubuntu de GitHub Actions
+    
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2  # Esto permite que GitHub Actions acceda al código del repositorio
+
+    - name: Set up Node.js (para herramientas como linters)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # Usamos Node.js porque muchas herramientas de validación como `htmlhint` y `stylelint` se basan en JavaScript
+
+    - name: Install dependencies
+      run: |
+        npm install -g htmlhint stylelint  # Instalamos los linters para HTML y CSS
+
+    - name: Validate HTML
+      run: htmlhint index.html  # Valida el archivo HTML principal (ajusta si tienes varios archivos HTML)
+
+    - name: Validate CSS
+      run: stylelint "**/*.css"  # Valida todos los archivos CSS en el repositorio
+
